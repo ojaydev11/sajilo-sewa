@@ -3,26 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
+  /* Nepal-inspired color palette */
+  --background: 45 29% 97%; /* Soft cream #fdfbf8 */
   --foreground: 222.2 84% 4.9%;
   --card: 0 0% 100%;
   --card-foreground: 222.2 84% 4.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 84% 4.9%;
-  --primary: 221.2 83.2% 53.3%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96%;
+  --primary: 217 91% 60%; /* Sky blue #4385f4 */
+  --primary-dark: 217 100% 50%; /* Darker blue #1a73e8 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 45 29% 95%; /* Light cream */
   --secondary-foreground: 222.2 84% 4.9%;
-  --muted: 210 40% 96%;
+  --muted: 45 29% 92%;
   --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96%;
-  --accent-foreground: 222.2 84% 4.9%;
+  --accent: 217 91% 95%; /* Very light blue */
+  --accent-foreground: 217 91% 60%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 221.2 83.2% 53.3%;
-  --radius: 0.5rem;
+  --border: 45 29% 90%;
+  --input: 45 29% 95%;
+  --ring: 217 91% 60%;
+  --radius: 1rem; /* More rounded corners */
+  
+  /* Nepal-specific colors */
+  --nepal-red: 0 100% 50%;
+  --nepal-blue: 240 100% 25%;
+  --mountain-gradient: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);
+  --temple-gold: 45 100% 60%;
 }
 
 .dark {
@@ -56,13 +64,51 @@ body {
   color: hsl(var(--foreground));
 }
 
+/* Nepal-inspired custom styles */
+.nepal-gradient {
+  background: var(--mountain-gradient);
+}
+
+.nepal-card {
+  @apply bg-white rounded-2xl shadow-lg border border-border/50 transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+}
+
+.nepal-button {
+  @apply bg-primary hover:bg-blue-600 text-primary-foreground rounded-xl px-6 py-3 font-medium transition-all duration-200 shadow-md hover:shadow-lg;
+}
+
+.nepal-button-outline {
+  @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-xl px-6 py-3 font-medium transition-all duration-200;
+}
+
+.nepal-search {
+  @apply bg-white rounded-2xl shadow-lg border border-border/50 px-6 py-4 focus-within:shadow-xl focus-within:border-primary/50 transition-all duration-300;
+}
+
+.service-icon {
+  @apply w-16 h-16 mx-auto mb-4 p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/20 flex items-center justify-center;
+}
+
+.chat-bubble-user {
+  @apply bg-primary text-primary-foreground rounded-2xl rounded-br-md px-4 py-3 ml-auto max-w-xs;
+}
+
+.chat-bubble-ai {
+  @apply bg-white text-foreground rounded-2xl rounded-bl-md px-4 py-3 mr-auto max-w-xs shadow-md;
+}
+
+/* Nepali cultural decorations */
+.temple-decoration {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f39c12' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20-20-8.954-20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
 /* Lite Mode for low bandwidth */
 @media (max-width: 768px) and (prefers-reduced-data: reduce) {
   .lite-mode {
     font-size: 14px;
   }
   
-  .lite-mode img {
+  .lite-mode img, .lite-mode svg {
     display: none;
   }
   
@@ -70,7 +116,11 @@ body {
     box-shadow: none;
   }
   
-  .lite-mode .bg-gradient-to-r {
-    background: solid;
+  .lite-mode .nepal-gradient {
+    background: hsl(var(--background));
+  }
+  
+  .lite-mode .nepal-card {
+    @apply shadow-sm;
   }
 }
