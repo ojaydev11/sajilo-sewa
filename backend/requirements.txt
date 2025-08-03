@@ -1,0 +1,17 @@
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.5
+Flask-CORS==4.0.0
+Werkzeug==2.3.7
+python-dotenv==1.0.0
+requests==2.31.0
+PyJWT==2.8.0
+bcrypt==4.0.1
+pymongo==4.5.0
+twilio==8.8.0
+# smtplib is built-in to Python
+gunicorn==21.2.0
+# psycopg2-binary==2.9.7  # Not needed for SQLite
+redis==4.6.0
+celery==5.3.1
+APScheduler==3.10.4
+Pillow==10.0.0
